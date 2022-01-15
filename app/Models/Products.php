@@ -22,9 +22,14 @@ class Products extends Model
         'status',
     ];
 
-    protected $with = ['category'];
+    protected $with = ['category', 'store'];
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(Stores::class, 'store_id', 'id');
     }
 }

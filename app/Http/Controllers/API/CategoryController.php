@@ -23,6 +23,17 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function product($id)
+    {
+
+        $category = Category::where('store_id', $id)->get();
+        return response()->json([
+            'status' => 200,
+            'message' => "Query Successful",
+            'category' => $category,
+        ]);
+    }
+
     public function create()
     {
         //
