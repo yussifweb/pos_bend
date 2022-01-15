@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum', 'isApiAdmin')->group( function () {
 
         Route::post('/admin-store-product', [ProductController::class, 'store']);
         // Route::get('/admin-edit-product/{id}', [ProductController::class, 'edit']);
-        Route::put('/admin-update-product/{id}', [ProductController::class, 'update']);
+        Route::post('/admin-update-product/{id}', [ProductController::class, 'update']);
         Route::delete('/admin-delete-product/{id}', [ProductController::class, 'destroy']);
     }
 );
@@ -51,7 +51,7 @@ Route::middleware('auth:sanctum', 'isApiOwner')->group( function () {
 
         Route::post('/store-product', [ProductController::class, 'store']);
         // Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
-        Route::put('/update-product/{id}', [ProductController::class, 'update']);
+        Route::post('/update-product/{id}', [ProductController::class, 'update']);
         Route::delete('/delete-product/{id}', [ProductController::class, 'destroy']);
     }
 );
@@ -61,7 +61,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/all-stores', [StoreController::class, 'allStores']);
     Route::get('/view-store', [StoreController::class, 'index']);
     Route::post('/view-category', [CategoryController::class, 'index']);
-    Route::get('/product-view-category', [CategoryController::class, 'product']);
+    Route::get('/product-view-category/{id}', [CategoryController::class, 'product']);
     Route::post('/view-products', [ProductController::class, 'index']);
     Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
     Route::post('/logout', [AuthController::class, 'logout']);
