@@ -113,6 +113,7 @@ class ProductController extends Controller
             'selling_price' => 'required|max:20',
             'original_price' => 'required|max:20',
             'qty' => 'required|max:4',
+            'status' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -151,7 +152,7 @@ class ProductController extends Controller
                     $product->image = 'uploads/product/' . $filename;
                 }
 
-                $product->status = $request->input('status') == true ? '1' : '0';
+                $product->status = $request->input('status');
 
                 $product->update();
 

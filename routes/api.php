@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\FrontendController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\StoreController;
 use Illuminate\Http\Request;
@@ -62,6 +63,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/view-store', [StoreController::class, 'index']);
     Route::post('/view-category', [CategoryController::class, 'index']);
     Route::get('/product-view-category/{id}', [CategoryController::class, 'product']);
+    Route::get('/fetchProducts/{slug}', [FrontendController::class, 'products']);
     Route::post('/view-products', [ProductController::class, 'index']);
     Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
     Route::post('/logout', [AuthController::class, 'logout']);
