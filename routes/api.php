@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\API\FrontendController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\StoreController;
 use Illuminate\Http\Request;
@@ -61,11 +64,27 @@ Route::middleware('auth:sanctum', 'isApiOwner')->group( function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/all-stores', [StoreController::class, 'allStores']);
     Route::get('/view-store', [StoreController::class, 'index']);
+
     Route::post('/view-category', [CategoryController::class, 'index']);
     Route::get('/product-view-category/{id}', [CategoryController::class, 'product']);
+
     Route::get('/fetchProducts/{slug}', [FrontendController::class, 'products']);
+    Route::get('viewproductdetail/{category_slug}/{product_slug}', [FrontendController::class, 'viewProduct']);
+
     Route::post('/view-products', [ProductController::class, 'index']);
     Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
+
+    Route::post('/add-to-cart', [CartController::class, 'addtocart']);
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::put('/update-cartquantity/{cart_id}/{scope}', [CartController::class, 'updatequantity']);
+    Route::delete('/delete-cartitem/{cart_id}', [CartController::class, 'destroy']);
+
+    // CHECKOUT
+    Route::post('/validate-order', [CheckoutController::class, 'validateorder']);
+    Route::post('/place-order', [CheckoutController::class, 'placeorder']);
+
+    Route::get('/orders', [OrderController::class, 'index']);
+
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

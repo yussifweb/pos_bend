@@ -18,6 +18,7 @@ class Products extends Model
         'selling_price',
         'original_price',
         'qty',
+        'unit',
         'image',
         'status',
     ];

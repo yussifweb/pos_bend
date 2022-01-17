@@ -38,6 +38,7 @@ class ProductController extends Controller
             'selling_price' => 'required|max:20',
             'original_price' => 'required|max:20',
             'qty' => 'required|max:4',
+            'unit' => 'required|max:191',
             'image' => 'required|image|mimes:jpeg,png,jpeg|max:2048',
         ]);
 
@@ -59,6 +60,7 @@ class ProductController extends Controller
             $product->selling_price = $request->input('selling_price');
             $product->original_price = $request->input('original_price');
             $product->qty = $request->input('qty');
+            $product->unit = $request->input('unit');
 
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
@@ -113,6 +115,7 @@ class ProductController extends Controller
             'selling_price' => 'required|max:20',
             'original_price' => 'required|max:20',
             'qty' => 'required|max:4',
+            'unit' => 'required|max:191',
             'status' => 'required',
         ]);
 
@@ -136,6 +139,7 @@ class ProductController extends Controller
                 $product->selling_price = $request->input('selling_price');
                 $product->original_price = $request->input('original_price');
                 $product->qty = $request->input('qty');
+                $product->unit = $request->input('unit');
 
                 if ($request->hasFile('image')) {
 

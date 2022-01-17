@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('selling_price');
             $table->string('original_price');
             $table->string('qty');
+            $table->string('unit');
             $table->string('image')->nullable();
             $table->tinyInteger('status')->default('0')->nullable();
             $table->timestamps();

@@ -33,7 +33,7 @@ class StoreController extends Controller
     public function allStores()
     {
         $user_id = auth('sanctum')->user()->id;
-        $store = Stores::where('status', '1')->where('user_id', $user_id)->get();
+        $store = Stores::where('status', '0')->where('user_id', $user_id)->get();
         return response()->json([
             'status' => 200,
             'store' => $store,
