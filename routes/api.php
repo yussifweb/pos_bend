@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum', 'isApiAdmin')->group( function () {
         });
         Route::post('/admin-add-category', [CategoryController::class, 'store']);
         Route::post('/admin-add-store', [StoreController::class, 'store']);
+        Route::delete('/admin-delete-store/{id}', [StoreController::class, 'destroy']);
         Route::get('/admin-edit-category/{id}', [CategoryController::class, 'edit']);
         Route::put('/admin-update-category/{id}', [CategoryController::class, 'update']);
         Route::delete('/admin-delete-category/{id}', [CategoryController::class, 'destroy']);
@@ -49,6 +50,7 @@ Route::middleware('auth:sanctum', 'isApiOwner')->group( function () {
         });
         Route::post('/add-category', [CategoryController::class, 'store']);
         Route::post('/add-store', [StoreController::class, 'store']);
+        Route::delete('/delete-store/{id}', [StoreController::class, 'destroy']);
         Route::get('/edit-category/{id}', [CategoryController::class, 'edit']);
         Route::put('/update-category/{id}', [CategoryController::class, 'update']);
         Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);
@@ -62,6 +64,9 @@ Route::middleware('auth:sanctum', 'isApiOwner')->group( function () {
 
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Route::get('/checkingAuth', function () {
+    //     return response()->json(['message' => 'You are In', 'status' => 200], 200);
+    // });
     Route::get('/all-stores', [StoreController::class, 'allStores']);
     Route::get('/view-store', [StoreController::class, 'index']);
 
