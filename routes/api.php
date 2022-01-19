@@ -76,7 +76,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/fetchProducts/{slug}', [FrontendController::class, 'products']);
     Route::get('viewproductdetail/{category_slug}/{product_slug}', [FrontendController::class, 'viewProduct']);
 
-    Route::post('/view-products', [ProductController::class, 'index']);
+    Route::get('/view-products/{id}', [ProductController::class, 'index']);
     Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 
     Route::post('/add-to-cart', [CartController::class, 'addtocart']);

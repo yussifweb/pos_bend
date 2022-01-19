@@ -29,12 +29,12 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            $token = $user->createToken($user->email . '_Token')->plainTextToken;
+            // $token = $user->createToken($user->email . '_Token', [''])->plainTextToken;
 
             return response()->json([
                 'status' => 200,
-                'username' => $user->name,
-                'token' => $token,
+                // 'username' => $user->name,
+                // 'token' => $token,
                 'message' => 'Registration Successful!'
             ]);
         }

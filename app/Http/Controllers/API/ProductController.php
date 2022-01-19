@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
-        $store_id = $request->store_id;
 
-        $products = Products::where('store_id', $store_id)->get();
+        $products = Products::where('store_id', $id)->get();
         return response()->json([
             'status' => 200,
             'message' => "Query Successful",

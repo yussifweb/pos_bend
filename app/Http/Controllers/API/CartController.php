@@ -91,8 +91,8 @@ class CartController extends Controller
         if (auth('sanctum')->check()) {
             $user_id = auth('sanctum')->user()->id;
             $cartItem = Cart::where('id', $cart_id)->where('user_id', $user_id)->first();
-            $qty = Products::where('id', $cartItem->product_id);
-            $qty = $qty->qty;
+            $product = Products::where('id', $cartItem->product_id);
+            $qty = $product->qty;
             if ($scope == "inc") {
                 if ($cartItem->product_qty < $qty) {
                     $cartItem->product_qty += 1;
